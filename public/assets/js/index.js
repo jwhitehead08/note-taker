@@ -33,14 +33,21 @@ const getNotes = () =>
     },
   });
 
-const saveNote = (note) =>
-  fetch('/api/notes', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(note),
+// const saveNote = (note) =>
+//   fetch('/api/notes', {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//     body: JSON.stringify(note),
+//   });
+
+$(document).ready(function() {
+  $('form').submit(function(e) {
+      e.preventDefault();
+      // or return false;
   });
+});
 
 const deleteNote = (id) =>
   fetch(`/api/notes/${id}`, {
