@@ -3,12 +3,14 @@ const router = require('express').Router();
 let noteDB = require('../../db/db.json');
 const fs = require("fs")
 
+// GET the notes from db.json and display on Notes page
 router.get("/notes", (req, res) => {
     noteDB = JSON.parse(fs.readFileSync("./db/db.json"))
     res.json(noteDB)
     console.log("GET", noteDB)
 })
 
+// POST new notes
 router.post("/notes", (req, res) => {
     var userNote = {
         title: req.body.title,
@@ -23,6 +25,7 @@ router.post("/notes", (req, res) => {
     console.log("POST", noteDB)
 })
 
+// Delete notes
 router.delete("/notes/:id", (req, res) => {
     console.log(req.params.id,"DELETE ROUTE")
     let newNotes = []
